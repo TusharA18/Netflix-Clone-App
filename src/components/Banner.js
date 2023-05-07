@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Banner.css";
 import axios from "../api/axios";
 import requests from "../api/Request";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    selectModalView,
+    setModal,
+    unSetModal,
+} from "../features/modal/modalSlice";
 
 const Banner = () => {
+    const dispatch = useDispatch();
+
+    const modalView = useSelector(selectModalView);
+
     const [movie, setMovie] = useState([]);
 
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/";
@@ -11,7 +21,6 @@ const Banner = () => {
     useEffect(() => {
         const fetchMovie = async () => {
             const request = await axios.get(requests.fetchNetflixOriginals);
-
             setMovie(
                 request.data.results[
                     Math.floor(Math.random() * request.data.results.length - 1)
@@ -26,8 +35,18 @@ const Banner = () => {
         return string?.length > n ? string.substr(0, n) + "..." : string;
     };
 
+    const toggleModal = (movie) => {
+        if (!modalView) {
+            const newMovie = { ...movie, type: "tv" };
+
+            dispatch(setModal(newMovie));
+        } else {
+            dispatch(unSetModal());
+        }
+    };
+
     return (
-        movie.backdrop_path && (
+        movie?.backdrop_path && (
             <header
                 className="banner"
                 style={{
@@ -42,7 +61,12 @@ const Banner = () => {
                         {movie?.title || movie?.name || movie?.original_name}
                     </h1>
                     <div className="banner__buttons">
-                        <button className="banner__button">Play</button>
+                        <button
+                            onClick={() => toggleModal(movie)}
+                            className="banner__button"
+                        >
+                            Play
+                        </button>
                         <button className="banner__button">My List</button>
                     </div>
                     <h1 className="banner__description">

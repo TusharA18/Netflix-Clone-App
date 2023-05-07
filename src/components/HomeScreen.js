@@ -4,28 +4,66 @@ import Nav from "./Nav";
 import Banner from "./Banner";
 import Row from "./Row.js";
 import requests from "../api/Request.js";
+import { useSelector } from "react-redux";
+import {
+    selectModalMovie,
+    selectModalView,
+} from "../features/modal/modalSlice.js";
+import Modal from "./Modal.js";
 
 const HomeScreen = () => {
+    const modalView = useSelector(selectModalView);
+    const modalMovie = useSelector(selectModalMovie);
+
     return (
         <div className="homeScreen">
             <Nav />
             <Banner />
 
             <Row
+                type="tv"
                 title="NETFLIX ORIGINALS"
                 fetchUrl={requests.fetchNetflixOriginals}
                 isLargeRow
             />
-            <Row title="Trending" fetchUrl={requests.fetchTrending} />
-            <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-            <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-            <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
             <Row
+                type="movie"
+                title="Trending"
+                fetchUrl={requests.fetchTrending}
+            />
+            <Row
+                type="movie"
+                title="Top Rated"
+                fetchUrl={requests.fetchTopRated}
+            />
+            <Row
+                type="movie"
+                title="Action Movies"
+                fetchUrl={requests.fetchActionMovies}
+            />
+            <Row
+                type="movie"
+                title="Comedy Movies"
+                fetchUrl={requests.fetchComedyMovies}
+            />
+            <Row
+                type="movie"
                 title="Romance Movies"
                 fetchUrl={requests.fetchRomanceMovies}
             />
-            <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-            <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+            <Row
+                type="movie"
+                title="Horror Movies"
+                fetchUrl={requests.fetchHorrorMovies}
+            />
+            <Row
+                type="movie"
+                title="Documentaries"
+                fetchUrl={requests.fetchDocumentaries}
+            />
+            {modalView && console.log(modalView)}
+            {modalView && console.log(modalMovie)}
+            {modalView && <Modal />}
         </div>
     );
 };
