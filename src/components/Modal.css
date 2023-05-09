@@ -31,14 +31,19 @@
     margin: 20px auto;
 }
 
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .modal__closeButton {
-    display: flex!;
-    justify-content: space-between!;
-    position: absolute !important;
-    padding: 7px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     border: 1px solid white !important;
-    top: 35px;
-    right: 25px;
+    width: 100px;
+    height: 50px;
     font-size: 15px !important;
     font-weight: 600 !important;
     border-radius: 4px !important;

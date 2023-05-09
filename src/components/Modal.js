@@ -50,14 +50,19 @@ const Modal = () => {
         <div className="modal">
             <div onClick={toggleModal} className="modal__overlay" />
             <div className="modal__contents">
-                <h2 className="modal__title">
-                    {modalMovie?.name ||
-                        modalMovie?.title ||
-                        modalMovie?.original_name}
-                </h2>
-                <Button onClick={toggleModal} className="modal__closeButton">
-                    <CloseIcon /> Close
-                </Button>
+                <div className="modal__header">
+                    <h2 className="modal__title">
+                        {modalMovie?.name ||
+                            modalMovie?.title ||
+                            modalMovie?.original_name}
+                    </h2>
+                    <Button
+                        onClick={toggleModal}
+                        className="modal__closeButton"
+                    >
+                        <CloseIcon /> Close
+                    </Button>
+                </div>
                 <p className="modal__description">{modalMovie?.overview}</p>
                 <Youtube
                     videoId={trailer && trailer.key}
