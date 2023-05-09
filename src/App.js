@@ -8,6 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { loginUser, logoutUser } from "./features/user/userSlice";
 import ProfileScreen from "./components/ProfileScreen";
+import SearchScreen from "./components/SearchScreen";
 
 const App = () => {
     const dispacth = useDispatch();
@@ -30,6 +31,8 @@ const App = () => {
         });
 
         return unsubscribe;
+
+        //eslint-disable-next-line
     }, [dispacth]);
 
     return (
@@ -39,6 +42,7 @@ const App = () => {
                 <Route exact path="/home" element={<HomeScreen />} />
                 <Route exact path="/login" element={<LoginScreen />} />
                 <Route exact path="/profile" element={<ProfileScreen />} />
+                <Route exact path="/search" element={<SearchScreen />} />
             </Routes>
         </div>
     );

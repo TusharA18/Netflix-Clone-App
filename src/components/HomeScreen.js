@@ -5,15 +5,11 @@ import Banner from "./Banner";
 import Row from "./Row.js";
 import requests from "../api/Request.js";
 import { useSelector } from "react-redux";
-import {
-    selectModalMovie,
-    selectModalView,
-} from "../features/modal/modalSlice.js";
+import { selectModalView } from "../features/modal/modalSlice.js";
 import Modal from "./Modal.js";
 
 const HomeScreen = () => {
     const modalView = useSelector(selectModalView);
-    const modalMovie = useSelector(selectModalMovie);
 
     return (
         <div className="homeScreen">
@@ -61,8 +57,6 @@ const HomeScreen = () => {
                 title="Documentaries"
                 fetchUrl={requests.fetchDocumentaries}
             />
-            {modalView && console.log(modalView)}
-            {modalView && console.log(modalMovie)}
             {modalView && <Modal />}
         </div>
     );

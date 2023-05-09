@@ -33,3 +33,12 @@
     right: 20px;
     cursor: pointer;
 }
+
+.nav__search {
+    position: fixed;
+    width: 40px !important;
+    height: 40px !important;
+    color: black !important;
+    background-color: white !important;
+    right: 90px;
+}
