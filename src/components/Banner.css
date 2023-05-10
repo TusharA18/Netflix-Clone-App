@@ -48,11 +48,11 @@
 }
 
 .banner--fadeBottom {
-    height: 10.7rem;
+    height: 11rem;
     background: linear-gradient(
         180deg,
         transparent,
         rgba(39, 38, 38, 0.61),
-        #111
+        black
     );
 }

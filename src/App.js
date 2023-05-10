@@ -3,17 +3,21 @@ import "./App.css";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import HomeScreen from "./components/HomeScreen";
 import LoginScreen from "./components/LoginScreen";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { loginUser, logoutUser } from "./features/user/userSlice";
 import ProfileScreen from "./components/ProfileScreen";
 import SearchScreen from "./components/SearchScreen";
+import { selectModalView } from "./features/modal/modalSlice";
+import Modal from "./components/Modal";
 
 const App = () => {
     const dispacth = useDispatch();
 
     const navigate = useNavigate();
+
+    const modalView = useSelector(selectModalView);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
@@ -42,7 +46,16 @@ const App = () => {
                 <Route exact path="/home" element={<HomeScreen />} />
                 <Route exact path="/login" element={<LoginScreen />} />
                 <Route exact path="/profile" element={<ProfileScreen />} />
-                <Route exact path="/search" element={<SearchScreen />} />
+                <Route
+                    exact
+                    path="/search"
+                    element={
+                        <>
+                            <SearchScreen />
+                            {modalView && <Modal />}
+                        </>
+                    }
+                />
             </Routes>
         </div>
     );

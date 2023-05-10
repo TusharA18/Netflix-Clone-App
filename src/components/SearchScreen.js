@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchScreen.css";
-import { IconButton, Modal } from "@mui/material";
+import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
@@ -119,7 +119,6 @@ const SearchScreen = () => {
                             />
                         )
                 )}
-                {modalView && <Modal />}
             </div>
         </div>
     );

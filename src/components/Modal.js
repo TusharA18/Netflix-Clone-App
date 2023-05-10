@@ -60,15 +60,16 @@ const Modal = () => {
                         onClick={toggleModal}
                         className="modal__closeButton"
                     >
-                        <CloseIcon /> Close
+                        <CloseIcon />
+                        Close
                     </Button>
                 </div>
                 <p className="modal__description">{modalMovie?.overview}</p>
                 <Youtube
-                    videoId={trailer && trailer.key}
+                    videoId={trailer?.key}
                     className={"modal__youtube"}
                     opts={{
-                        height: "390",
+                        height: "350",
                         width: "100%",
                         playerVars: {
                             autoplay: 0,

@@ -78,7 +78,8 @@
 }
 
 .searchScreen__body {
-    padding: 30px;
+    padding: 10px;
+    margin-left: 10px;
 }
 
 .searchScreen__title {
@@ -88,8 +89,10 @@
 }
 
 .searchScreen__image {
-    width: 450px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     padding: 10px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }

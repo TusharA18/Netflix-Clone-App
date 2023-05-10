@@ -9,6 +9,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    object-fit: contain;
 }
 
 .modal__overlay {
@@ -49,6 +50,7 @@
     border-radius: 4px !important;
     color: white !important;
     margin-left: 20px !important;
+    object-fit: contain;
 }
 
 .modal__closeButton:hover {
@@ -78,4 +80,5 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
+    object-fit: contain;
 }
