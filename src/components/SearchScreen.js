@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchScreen.css";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -22,6 +22,26 @@ const SearchScreen = () => {
 
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/";
 
+    const transitionHeight = () => {
+        if (window.scrollY > 100) {
+            document
+                .querySelector(".searchScreen")
+                .classList.add("searchScreen__activeHeight");
+        } else {
+            document
+                .querySelector(".searchScreen")
+                .classList.remove("searchScreen__activeHeight");
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", transitionHeight);
+
+        return () => {
+            window.removeEventListener("scroll", transitionHeight);
+        };
+    }, []);
+
     const fetchMovie = async () => {
         const request = await axios.get(`/search/${select.toLowerCase()}`, {
             params: {
@@ -30,7 +50,6 @@ const SearchScreen = () => {
             },
         });
 
-        console.log(request);
         setMovies(request.data.results);
     };
 

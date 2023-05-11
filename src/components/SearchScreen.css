@@ -1,8 +1,12 @@
 .searchScreen {
-    height: 100%;
+    height: 100vh;
     color: white;
     background-color: black;
     padding-top: 2.5rem;
+}
+
+.searchScreen__activeHeight {
+    height: auto;
 }
 
 .searchScreen__close > .MuiSvgIcon-root {

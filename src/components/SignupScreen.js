@@ -18,9 +18,7 @@ const SignUpScreen = ({ email }) => {
             emailRef.current.value,
             passwordRef.current.value
         )
-            .then((result) => {
-                console.log(result);
-            })
+            .then()
             .catch((error) => alert(error.message));
     };
 
@@ -32,7 +30,7 @@ const SignUpScreen = ({ email }) => {
             emailRef.current.value,
             passwordRef.current.value
         )
-            .then((result) => console.log(result))
+            .then()
             .catch((error) => alert(error.message));
     };
 

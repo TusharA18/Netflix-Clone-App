@@ -7,7 +7,6 @@ import {
     setModal,
     unSetModal,
 } from "../features/modal/modalSlice";
-import { Modal } from "@mui/material";
 
 const Row = ({ title, fetchUrl, type, isLargeRow = false }) => {
     const dispatch = useDispatch();
