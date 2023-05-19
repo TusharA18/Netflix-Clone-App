@@ -2,7 +2,9 @@ import React, { useRef } from "react";
 import "./SignupScreen.css";
 import { auth } from "../firebase";
 import {
+    browserSessionPersistence,
     createUserWithEmailAndPassword,
+    setPersistence,
     signInWithEmailAndPassword,
 } from "firebase/auth";
 
@@ -13,24 +15,36 @@ const SignUpScreen = ({ email }) => {
     const signupUser = async (e) => {
         e.preventDefault();
 
-        await createUserWithEmailAndPassword(
-            auth,
-            emailRef.current.value,
-            passwordRef.current.value
-        )
-            .then()
+        setPersistence(auth, browserSessionPersistence)
+            .then(async () => {
+                try {
+                    return await createUserWithEmailAndPassword(
+                        auth,
+                        emailRef.current.value,
+                        passwordRef.current.value
+                    );
+                } catch (error) {
+                    return alert(error.message);
+                }
+            })
             .catch((error) => alert(error.message));
     };
 
     const loginUser = (e) => {
         e.preventDefault();
 
-        signInWithEmailAndPassword(
-            auth,
-            emailRef.current.value,
-            passwordRef.current.value
-        )
-            .then()
+        setPersistence(auth, browserSessionPersistence)
+            .then(async () => {
+                try {
+                    return await signInWithEmailAndPassword(
+                        auth,
+                        emailRef.current.value,
+                        passwordRef.current.value
+                    );
+                } catch (error) {
+                    return alert(error.message);
+                }
+            })
             .catch((error) => alert(error.message));
     };
 
